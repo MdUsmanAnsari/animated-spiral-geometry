@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+:root{
+    --size:30vmin;
+    --bg-color:#111;
+    --border-rd:50% 10% 10% 100%;
+    --border-w:1px;
+    --border-cl-left:#ff0000;
+    --border-cl-right:#ff0000;
+    --border-cl-top:#ff0000;
+    --border-cl-bottom:#ff0000;
+    --border-st:solid;
+    --reflect-dir:above;
+}
+
+
+body{
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.circles{
+        position: relative;
+        @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+                transform: rotate(#{$i * 2}deg);
+            }
+        }
+       
+}
+
+.circle{
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    width: var(--size);
+    height: calc(var(--size));
+    border-radius: var(--border-rd);
+    transform-origin: right bottom;
+    border-width:var(--border-w);
+    border-style: var(--border-st);
+    border-left-color: var(--border-cl-left);
+    border-top-color: var(--border-cl-top);
+    border-bottom-color: var(--border-cl-bottom);
+    border-right-color: var(--border-cl-right);
+    -webkit-box-reflect: var(--reflect-dir) 4vmin linear-gradient(to top, transparent, #fff);
+    transition: all 1.5s ease-in-out;
+
+    @for $i from 1 through 21 {
+        &:nth-child(#{$i}) {
+                transform: rotate(#{$i * 20}deg);
+        }
+    }
+}
